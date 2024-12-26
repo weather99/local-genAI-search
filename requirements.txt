@@ -1,4 +1,4 @@
-torch~=2.2.0.dev20230922
+torch
 transformers~=4.36.0.dev0
 langchain
 langgraph
@@ -11,7 +11,7 @@ sentence_transformers
 langchain-qdrant
 fastapi~=0.111.0
 gradio_client==0.5.0
-pydantic==1.10.11
+pydantic
 uvicorn
 accelerate
 streamlit
