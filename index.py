@@ -4,7 +4,7 @@ from os.path import isfile, join,isdir
 
 import torch
 from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain_qdrant import Qdrant
+from langchain.vectorstores import Qdrant
 import sys
 from langchain_text_splitters import TokenTextSplitter
 from pptx import Presentation
@@ -37,7 +37,11 @@ def getTextFromPPTX(filename):
     fullText = []
     for slide in prs.slides:
         for shape in slide.shapes:
-            fullText.append(shape.text)
+            try:
+                fullText.append(shape.text)
+            except Exception as e:
+                print(f"Error processing shape: {e}")
+                continue
     return '\n'.join(fullText)
 
 def main_indexing(mypath):
